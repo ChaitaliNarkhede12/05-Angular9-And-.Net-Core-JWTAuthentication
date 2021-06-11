@@ -1,0 +1,68 @@
+<div class="col-md-12" *ngIf="!isCreateView">
+  <div class="col-md-12">
+    <button type="button" name="btnCreate" (click)="createEmployee()">Create</button>
+  </div>
+  <div class="col-md-12">
+    <table>
+      <thead>
+        <tr>
+          <th>
+            Action
+          </th>
+          <th>Employee Name</th>
+          <th>Email Id</th>
+          <th>Address</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let emp of empList" (click)="editData(emp)">
+          <td>
+            <button (click)="deleteEmployee(emp)">Delete</button>
+          </td>
+          <td>{{emp.empName}}</td>
+          <td>{{emp.empEmailId}}</td>
+          <td>{{emp.empaddress}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="col-md-12" *ngIf="isCreateView">
+  <form name="employeeForm">
+    <div class="col-md-12">
+      <div class="col-md-4">
+        <span>Employee Name</span>
+      </div>
+      <div class="col-md-4">
+        <input type="text" id="empname" name="empname"
+               [(ngModel)]="employee.empName" />
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <div class="col-md-4">
+        <span>Email Id</span>
+      </div>
+      <div class="col-md-4">
+        <input type="text" id="empEmailId" name="empEmailId"
+               [(ngModel)]="employee.empEmailId" />
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <div class="col-md-4">
+        <span>Address</span>
+      </div>
+      <div class="col-md-4">
+        <input type="text" id="empAddress" name="empAddress"
+               [(ngModel)]="employee.empaddress" />
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <button id="btnSave" (click)="saveEmployee()">Save</button>
+      <button id="btnSave" (click)="cancel()">Cancel</button>
+    </div>
+  </form>
+</div>
